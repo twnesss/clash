@@ -1199,9 +1199,9 @@ listeners:
 # vmess-config: vmess://1:9d0cb9d0-964f-4ef6-897d-6c6b3ccf9e68@:12345
 
 # tuic 服务器入口（传入流量将和 socks,mixed 等入口一样按照 mode 所指定的方式进行匹配处理）
-# tuic-server:
-#  enable: true
-#  listen: 127.0.0.1:10443
+tuic-server:
+ enable: true
+ listen: 127.0.0.1:10443
 #  token:    # tuicV4 填写（可以同时填写 users）
 #    - TOKEN
 #  users:    # tuicV5 填写（可以同时填写 token）
