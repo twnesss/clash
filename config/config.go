@@ -446,7 +446,7 @@ func Parse(buf []byte) (*Config, error) {
 
 func DefaultRawConfig() *RawConfig {
 	return &RawConfig{
-		AllowLan:          false,
+		AllowLan:          true,
 		BindAddress:       "*",
 		LanAllowedIPs:     []netip.Prefix{netip.MustParsePrefix("0.0.0.0/0"), netip.MustParsePrefix("::/0")},
 		IPv6:              true,
@@ -455,9 +455,9 @@ func DefaultRawConfig() *RawConfig {
 		GeoUpdateInterval: 24,
 		GeodataMode:       geodata.GeodataMode(),
 		GeodataLoader:     "memconservative",
-		UnifiedDelay:      false,
+		UnifiedDelay:      true,
 		Authentication:    []string{},
-		LogLevel:          log.INFO,
+		LogLevel:          log.SILENT,
 		Hosts:             map[string]any{},
 		Rule:              []string{},
 		Proxy:             []map[string]any{},
@@ -467,7 +467,7 @@ func DefaultRawConfig() *RawConfig {
 		GlobalUA:          "clash.meta/" + C.Version,
 		ETagSupport:       true,
 		DNS: RawDNS{
-			Enable:         false,
+			Enable:         true,
 			IPv6:           false,
 			UseHosts:       true,
 			UseSystemHosts: true,
@@ -475,25 +475,10 @@ func DefaultRawConfig() *RawConfig {
 			EnhancedMode:   C.DNSMapping,
 			FakeIPRange:    "198.18.0.1/16",
 			FallbackFilter: RawFallbackFilter{
-				GeoIP:     true,
-				GeoIPCode: "CN",
+				GeoIP:     false,
+				GeoIPCode: "",
 				IPCIDR:    []string{},
 				GeoSite:   []string{},
-			},
-			DefaultNameserver: []string{
-				"114.114.114.114",
-				"223.5.5.5",
-				"8.8.8.8",
-				"1.0.0.1",
-			},
-			NameServer: []string{
-				"https://doh.pub/dns-query",
-				"tls://223.5.5.5:853",
-			},
-			FakeIPFilter: []string{
-				"dns.msftnsci.com",
-				"www.msftnsci.com",
-				"www.msftconnecttest.com",
 			},
 			FakeIPFilterMode: C.FilterBlackList,
 		},
